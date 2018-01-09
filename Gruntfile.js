@@ -19,6 +19,9 @@ module.exports = function(grunt) {
         }
       }
     },
+    jshint: {
+      all: ['Gruntfile.js', 'src/**']
+    },
     wiredep: {
       task: {
         src: 'index.html'
@@ -37,7 +40,7 @@ module.exports = function(grunt) {
     watch: {
       livereload: {
         options: {livereload: true, spawn: true},
-        tasks: ['clean', 'wiredep', 'copy'],
+        tasks: ['clean', 'jshint', 'wiredep', 'copy'],
         files: 'src/**/*',
         reload: true
       }
@@ -45,10 +48,11 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-wiredep');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['clean', 'wiredep', 'copy', 'connect:server', 'watch']);
-}
+  grunt.registerTask('default', ['clean', 'jshint', 'wiredep', 'copy', 'connect:server', 'watch']);
+};
