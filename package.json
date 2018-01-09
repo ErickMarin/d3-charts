@@ -1,0 +1,19 @@
+{
+  "name": "d3-charts",
+  "version": "1.0.0",
+  "description": "Charts example of D3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErickMarin/d3-charts.git"
+  },
+  "author": "Lenin Meza lmeza@anzen.com.mx, Erick Marin emarin@anzen.com.mx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErickMarin/d3-charts/issues"
+  },
+  "homepage": "https://github.com/ErickMarin/d3-charts#readme"
+}
