@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       livereload: {
         options: {livereload: true, spawn: true},
         tasks: ['clean', 'jshint', 'wiredep', 'copy'],
-        files: 'src/**/*',
+        files: ['src/**', 'index.html'],
         reload: true
       }
     }
