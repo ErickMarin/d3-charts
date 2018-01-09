@@ -1,0 +1,20 @@
+{
+  "name": "d3-charts",
+  "version": "1.0.0",
+  "description": "Charts example of D3",
+  "main": "index.js",
+  "author": "Lenin Meza lmeza@anzen.com.mx, Erick Marin emarin@anzen.com.mx",
+  "license": "ISC",
+  "homepage": "https://github.com/ErickMarin/d3-charts#readme",
+  "dependencies": {
+    "d3": "^4.12.2"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ]
+}
