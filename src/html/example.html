@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html html-lang="en">
+<head>
+  <title>Charts example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+  <style type="text/css">
+    .chart div {
+      padding:1px;
+      background-color:green;
+      color:white;
+    }
+    .axis text {
+      font: 10px sans-serif;
+    }
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+    .tick {
+      fill: none;
+      stroke: #000;
+    }
+  </style>
+</head>
+<body>
+  <svg width="600" height="300"></svg>
+  <div class="chart"></div>
+  <!-- bower:js -->
+  <script src="../../vendor/d3/d3.js"></script>
+  <!-- endbower -->
+  <script src="../scripts/main.js"></script>
+</body>
+</html>
