@@ -20,20 +20,20 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      all: ['Gruntfile.js', 'src/**']
+      all: ['Gruntfile.js', 'src/scripts/**']
     },
     wiredep: {
       task: {
-        src: 'index.html'
+        src: ['index.html', 'src/html/*.html']
       }
     },
     copy: {
       main: {
         files: [{
           expand: true,
-          cwd: 'src/scripts',
-          src: '*',
-          dest: 'tmp/scripts/'
+          cwd: 'src',
+          src: '**',
+          dest: 'tmp/'
         }]
       }
     },
