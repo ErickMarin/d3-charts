@@ -7,13 +7,8 @@ const wHeight = window.innerHeight;
 const width = wWidth - margin.left - margin.right;
 const height = wHeight - margin.top - margin.bottom;
 const parseDate = d3.timeParse('%Y');
-<<<<<<< HEAD
 const formatSi = d3.format('.3s');
 const formatNumber = d3.format('.1f');
-=======
-const formatSi = d3.format(".3s");
-const formatNumber = d3.format(".1f");
->>>>>>> 21175616356363418f9bb9f0047d1d0cb0935b9b
 const formatBillion = function(x) {
     return formatNumber(x / 1e9);
 };
@@ -43,11 +38,7 @@ const area = d3.area()
     });
 
 const stack = d3.stack();
-<<<<<<< HEAD
 const svg = d3.select('.stacked').append('svg')
-=======
-const svg = d3.select('body').append('svg')
->>>>>>> 21175616356363418f9bb9f0047d1d0cb0935b9b
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
     .append('g')
