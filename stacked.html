@@ -4,12 +4,25 @@
   <title>Charts example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+  <style>
+  body {
+    font: 10px sans-serif;
+  }
+  .stacked .axis path,
+  .stacked .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }  
+  </style>
 </head>
 <body>
-  <svg></svg>
+  <div class="stacked"></div>
+
   <!-- bower:js -->
   <script src="vendor/d3/d3.js"></script>
   <!-- endbower -->
-  <script src="../tmp/scripts/main.js"></script>
+  <script src="src/scripts/stacked.js"></script>
 </body>
 </html>
