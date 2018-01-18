@@ -7,8 +7,8 @@ const wHeight = window.innerHeight;
 const width = wWidth - margin.left - margin.right;
 const height = wHeight - margin.top - margin.bottom;
 const parseDate = d3.timeParse('%Y');
-const formatSi = d3.format(".3s");
-const formatNumber = d3.format(".1f");
+const formatSi = d3.format('.3s');
+const formatNumber = d3.format('.1f');
 const formatBillion = function(x) {
     return formatNumber(x / 1e9);
 };
@@ -38,7 +38,7 @@ const area = d3.area()
     });
 
 const stack = d3.stack();
-const svg = d3.select('body').append('svg')
+const svg = d3.select('.stacked').append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
     .append('g')
@@ -88,7 +88,7 @@ d3.csv('data.csv', function(error, data) {
             return color(d.key);
         });
 
-    browser.append('text')
+/*     browser.append('text')
         .datum(function(d) {
             return d;
         })
@@ -97,11 +97,11 @@ d3.csv('data.csv', function(error, data) {
         })
         .attr('x', -6)
         .attr('dy', '.35em')
-        .style("text-anchor", "start")
+        .style('text-anchor', 'start')
         .text(function(d) {
             return d.key;
         })
-        .attr('fill-opacity', 1);
+        .attr('fill-opacity', 1); */
 
     svg.append('g')
         .attr('class', 'x axis')
@@ -112,7 +112,7 @@ d3.csv('data.csv', function(error, data) {
         .attr('class', 'y axis')
         .call(yAxis);
 
-    svg.append("text")
-        .attr("x", width / 2)
-        .text("Emisora");
+    svg.append('text')
+        .attr('x', width / 2)
+        .text('Emisora');
 });
