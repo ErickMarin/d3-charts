@@ -5,7 +5,7 @@ const data = [{
     "precioApertura": 230,
     "precioUltimo": 229,
     "precioMinimo": 228,
-    "precioMaximo": 231,
+    "precioMaximo": 131,
     "volumen": 10
 },
 {
@@ -21,7 +21,7 @@ const data = [{
     "precioApertura": 230,
     "precioUltimo": 231.76,
     "precioMinimo": 228,
-    "precioMaximo": 231,
+    "precioMaximo": 200,
     "volumen": 10
 },
 {
@@ -53,7 +53,7 @@ const data = [{
     "precioApertura": 230,
     "precioUltimo": 229.9,
     "precioMinimo": 228,
-    "precioMaximo": 231,
+    "precioMaximo": 131,
     "volumen": 10
 },
 {
@@ -65,15 +65,15 @@ const data = [{
     "volumen": 10
 }];
 
-const margin = {top:20, right:20, bottom:20, left:20};
+const margin = {top:20, bottom:20};
 const height = 300 - margin.top - margin.bottom;
-const width = 600 - margin.right - margin.left;
+const width = window.innerWidth;
 
 const svg = d3.select('svg')
-  .attr('width', width + margin.left + margin.right)
+  .attr('width', width)
   .attr('height', height + margin.top + margin.bottom)
   .append('g')
-  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+  .attr('transform', 'translate(0,' + margin.top + ')')
   .datum(data);
 
 const es_MX = d3.timeFormatLocale({decimal: ".",thousands: ",",grouping: [3],currency: ["$", ""],dateTime: "%A, %e de %B de %Y, %X",date: "%d/%m/%Y",time: "%H:%M:%S",periods: ["AM", "PM"],days: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],shortDays: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],shortMonths: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]});
@@ -87,6 +87,7 @@ const y = d3.scaleLinear()
   .range([height, 1]);
 
 const xAxis = d3.axisBottom()
+  .ticks(4)
   .scale(x);
 
 const yAxis = d3.axisLeft(y)
@@ -94,10 +95,10 @@ const yAxis = d3.axisLeft(y)
   .tickSize(0, -width);
 
 const area = d3.area()
-  .x(function(d) { return x(parseTime(d.fecha)); })
+  .x(function(d, i) { return x(parseTime(d.fecha)); })
   .y1(function(d) { return y(d.precioMaximo); })
   .y0(y(0))
-  .curve(d3.curveNatural);
+  .curve(d3.curveMonotoneX);
 
 
 /* Begin the iterate with data */
@@ -110,7 +111,7 @@ const dataNest = d3.nest()
 
 svg.append('path')
   .attr('class', 'area')
-  .attr('transform', 'translate(-20, 20)')
+  .attr('transform', 'translate(0, ' + margin.top + ')')
   .attr('d', area);
 
 svg.append('g')
