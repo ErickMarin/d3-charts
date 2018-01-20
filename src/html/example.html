@@ -23,8 +23,13 @@
     }
     .area {
       fill: url(#Gradient1);
-      stroke: rgb(0, 189, 242);
+      stroke: transparent;
       stroke-width: 1.5px;
+    }
+    .line {
+      fill: none;
+      stroke: rgb(0, 189, 242);
+      stroke-width: 4px;
     }
     .tick {
       fill: none;
@@ -39,7 +44,7 @@
   </style>
 </head>
 <body>
-  <svg>
+  <svg id="svg">
     <defs>
       <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
         <stop offset="0%" stop-color="rgb(0, 189, 242)" />
