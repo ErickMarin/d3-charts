@@ -76,8 +76,6 @@ const svg = d3.select('svg')
   .attr('transform', 'translate(0,' + margin.top + ')')
   .datum(data);
 
-const es_MX = d3.timeFormatLocale({decimal: ".",thousands: ",",grouping: [3],currency: ["$", ""],dateTime: "%A, %e de %B de %Y, %X",date: "%d/%m/%Y",time: "%H:%M:%S",periods: ["AM", "PM"],days: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],shortDays: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],shortMonths: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]});
-
 const parseTime = d3.timeParse('%Y-%m-%j %H:%M:%S');
 
 const x = d3.scaleTime()
@@ -92,6 +90,7 @@ const xAxis = d3.axisBottom()
 
 const yAxis = d3.axisLeft(y)
   .ticks(5)
+  .tickPadding(30)
   .tickSize(0, -width);
 
 const area = d3.area()
@@ -100,18 +99,27 @@ const area = d3.area()
   .y0(y(0))
   .curve(d3.curveMonotoneX);
 
+const line = d3.line()
+  .x(function(d) { return x(parseTime(d.fecha)); })
+  .y(function(d) { return y(d.precioMaximo); })
+  .curve(d3.curveMonotoneX);
+
 
 /* Begin the iterate with data */
 x.domain(d3.extent(data, function(d) { return parseTime(d.fecha); }));
 y.domain([0, d3.max(data, function(d) { return d.precioMaximo; })]);
 
-const dataNest = d3.nest()
-  .key(function(d) { return d.precioMaximo; })
-  .entries(data);
+svg.append('path')
+  .attr('class', 'line')
+  .attr('d', line)
+  .attr('stroke-dasharray', (width*3) + ' ' + (width*3))
+  .attr('stroke-dashoffset', (width*3))
+  .transition()
+    .duration(2500)
+    .attr('stroke-dashoffset', 0);
 
 svg.append('path')
   .attr('class', 'area')
-  .attr('transform', 'translate(0, ' + margin.top + ')')
   .attr('d', area);
 
 svg.append('g')
@@ -125,11 +133,3 @@ svg.append('g')
   .attr('class', 'y axis')
   .attr('transform', 'translate(' + width + ',0)')
   .call(yAxis);
-
-/*svg.selectAll('.dot')
-  .data(data.filter(function(d) { return d; }))
-  .enter().append('circle')
-    .attr('class', 'dot')
-    .attr('cx', area.x())
-    .attr('cy', area.y1())
-    .attr('r', 3.5);*/
