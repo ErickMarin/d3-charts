@@ -104,10 +104,28 @@ const line = d3.line()
   .y(function(d) { return y(d.precioMaximo); })
   .curve(d3.curveMonotoneX);
 
+const startData = data.map(function(data) {
+  return {
+    date: data.fecha,
+    precioMaximo: 0
+  };
+});
+
 
 /* Begin the iterate with data */
 x.domain(d3.extent(data, function(d) { return parseTime(d.fecha); }));
 y.domain([0, d3.max(data, function(d) { return d.precioMaximo; })]);
+
+svg.append('path')
+  .attr('class', 'area')
+  .attr('d', area)
+  .style('transform', 'translate(0, -300)')
+  .style('opacity', '0')
+  .transition()
+    .delay(700)
+    .duration(1000)
+    .style('transform', 'translate(0, 0)')
+    .style('opacity', '1');
 
 svg.append('path')
   .attr('class', 'line')
@@ -115,12 +133,8 @@ svg.append('path')
   .attr('stroke-dasharray', (width*3) + ' ' + (width*3))
   .attr('stroke-dashoffset', (width*3))
   .transition()
-    .duration(2500)
+    .duration(2000)
     .attr('stroke-dashoffset', 0);
-
-svg.append('path')
-  .attr('class', 'area')
-  .attr('d', area);
 
 svg.append('g')
   .style('font-family', 'sans-serif')
