@@ -104,13 +104,6 @@ const line = d3.line()
   .y(function(d) { return y(d.precioMaximo); })
   .curve(d3.curveMonotoneX);
 
-const startData = data.map(function(data) {
-  return {
-    date: data.fecha,
-    precioMaximo: 0
-  };
-});
-
 
 /* Begin the iterate with data */
 x.domain(d3.extent(data, function(d) { return parseTime(d.fecha); }));
