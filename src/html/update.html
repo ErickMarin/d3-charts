@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html html-lang="en">
+<head>
+  <title>Charts example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+  <style type="text/css">
+    * {margin:0;}
+    svg {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(to bottom, rgb(0, 118, 192), rgb(0, 45, 114)) 
+    }
+    .chart div {
+      padding:1px;
+      background-color:green;
+      color:white;
+    }
+    .axis text {
+      font: 10px sans-serif;
+      fill: #ffffff;
+    }
+    .axis path,
+    .axis line {
+      fill: white;
+      stroke: transparent;
+      shape-rendering: crispEdges;
+    }
+    .area {
+      fill: url(#Gradient1);
+      stroke: transparent;
+      stroke-width: 1.5px;
+      height: 0px;
+    }
+    .line {
+      fill: none;
+      stroke: rgb(0, 189, 242);
+      stroke-width: 2px;
+    }
+    .tick {
+      fill: none;
+      stroke: #fff;
+      stroke-width: .5px;
+    }
+    .dot {
+      fill: green;
+      stroke: aliceblue;
+      stroke-width: 1.5px;
+    }
+  </style>
+</head>
+<body>
+  <svg id="svg">
+    <defs>
+      <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="rgb(0, 189, 242)" />
+        <stop offset="100%" stop-color="rgb(0, 45, 114)" />
+      </linearGradient>
+    </defs>
+  </svg>
+  <!-- bower:js -->
+  <script src="../../vendor/d3/d3.js"></script>
+  <!-- endbower -->
+  <script src="../scripts/update.js"></script>
+</body>
+</html>

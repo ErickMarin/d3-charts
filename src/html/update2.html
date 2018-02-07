@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update click</title>
+  <style type="text/css">
+    body { font: 12px Arial; }
+    path { 
+        stroke: steelblue;
+        stroke-width: 2;
+        fill: none;
+    }
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: grey;
+        stroke-width: 1;
+        shape-rendering: crispEdges;
+    }   
+  </style>
+</head>
+<body>
+  <div id="option">
+  <input name="updateButton" 
+         type="button" 
+         value="Update" 
+         onclick="updateData()" />
+  </div>
+  <!-- bower:js -->
+  <script src="../../vendor/d3/d3.js"></script>
+  <!-- endbower -->
+  <script src="../scripts/update2.js"></script>
+</body>
+</html>
